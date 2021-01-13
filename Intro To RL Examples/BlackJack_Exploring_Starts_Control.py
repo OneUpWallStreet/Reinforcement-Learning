@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[46]:
-
-
 import gym
 import numpy as np
 from collections import defaultdict
@@ -20,14 +14,13 @@ from collections import defaultdict
 get_ipython().run_line_magic('matplotlib', 'inline')
 
 
-# In[47]:
-
-
 import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
+#Using plot_utils.py by Udacity, used only for plotting policy and value function
+#Link - https://github.com/udacity/deep-reinforcement-learning/blob/master/dynamic-programming/plot_utils.py
 def plot_blackjack_values(V):
 
     def get_Z(x, y, usable_ace):
@@ -93,15 +86,8 @@ def plot_policy(policy):
     plt.show()
 
 
-# In[48]:
-
-
 env = gym.make('Blackjack-v0')
 discount =1
-
-
-# In[49]:
-
 
 def random_policy(state):
     
@@ -112,9 +98,6 @@ def random_policy(state):
     
     else:
         return 1
-
-
-# In[50]:
 
 
 def get_trajectory(policy,env):
@@ -135,16 +118,9 @@ def get_trajectory(policy,env):
     
     return trajectory    
 
-
-# In[51]:
-
-
 def best_policy(Q):
     
     return dict((k,np.argmax(v)) for k,v in Q.items())
-
-
-# In[52]:
 
 
 def update_Q(env,tra,Q,G,old_state_actions,N):
@@ -170,10 +146,6 @@ def update_Q(env,tra,Q,G,old_state_actions,N):
             old_state_actions.append(S_A)
         
 
-
-# In[53]:
-
-
 def MC_Control(env,iters=500000):
     
     nA = env.action_space.n
@@ -195,39 +167,8 @@ def MC_Control(env,iters=500000):
     return Q,policy
 
 
-# In[63]:
-
-
 Q,policy = MC_Control(env,iters=500000)
 V = dict((k,np.max(v)) for k, v in Q.items())
 
-
-# In[64]:
-
-
 plot_blackjack_values(V)
-
-
-# In[65]:
-
-
 plot_policy(policy)
-
-
-# In[68]:
-
-
-V
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
