@@ -1,37 +1,16 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[60]:
-
-
 import gym
 import numpy as np
 from collections import defaultdict
-
-
-# In[61]:
-
 
 def best_policy(Q):
     
     return dict((state,np.argmax(best_action)) for state,best_action in Q.items())
 
-
-# In[62]:
-
-
 def best_value(Q):
     
     return dict((state,np.max(action)) for state,action in Q.items())
 
-
-# In[63]:
-
-
 env = gym.make('NChain-v0')
-
-
-# In[64]:
 
 
 def get_action_prob(Q_s,state,nA,eps):
@@ -40,9 +19,6 @@ def get_action_prob(Q_s,state,nA,eps):
     best_action = np.argmax(Q_s)
     action_prob[best_action] = (1-eps) + (eps/nA)
     return action_prob
-
-
-# In[65]:
 
 
 def get_trajectory(Q,eps,nA):
@@ -63,10 +39,6 @@ def get_trajectory(Q,eps,nA):
         
     return trajectory
 
-
-# In[66]:
-
-
 def update_Q(tra,Q,alpha):
     
     states,actions,rewards = zip(*tra)
@@ -77,10 +49,6 @@ def update_Q(tra,Q,alpha):
         Q[state][actions[i]] = old_Q + alpha*(sum(rewards[i:]) - old_Q)
         
     return Q
-
-
-# In[67]:
-
 
 def MC_Control(alpha,eps_start,eps_min,eps_decay,Q,nA,iters):
     
@@ -93,10 +61,6 @@ def MC_Control(alpha,eps_start,eps_min,eps_decay,Q,nA,iters):
         policy = best_policy(Q)
     return Q,policy
 
-
-# In[68]:
-
-
 nA = env.action_space.n
 Q = defaultdict(lambda: np.zeros(nA))
 eps_start = 1
@@ -108,41 +72,9 @@ alpha = 0.02
 Q,policy = MC_Control(alpha,eps_start,eps_min,eps_decay,Q,nA,iters)
 V = best_value(Q)
 
-
-# In[77]:
-
-
 print(Q)
 print(V)
 print(policy)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[73]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
 
 
 
