@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[59]:
-
-
 import numpy as np
 from collections import defaultdict
 import time
@@ -13,10 +7,6 @@ from matplotlib.colors import LinearSegmentedColormap
 import time
 
 W = LinearSegmentedColormap.from_list('w', ["w", "w"], N=256)
-
-
-# In[35]:
-
 
 Move_Reward = -1
 Final_Reward = 0
@@ -28,9 +18,6 @@ ACTIONS = {
     3: [0, 1],   # east
 }
 discount = 1
-
-
-# In[73]:
 
 
 class GridWorld:
@@ -148,27 +135,7 @@ class GridWorld:
         return fig, ax
 
 
-# In[74]:
-
-
 env = GridWorld()
-
-
-# In[75]:
-
-
 state_values = env.TD_Prediction(iters = 100000,alpha=0.2)
 print(state_values)
-
-
-# In[58]:
-
-
 env.render()
-
-
-# In[ ]:
-
-
-
-
