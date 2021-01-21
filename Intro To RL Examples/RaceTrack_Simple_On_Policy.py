@@ -1,16 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import numpy as np
 from collections import defaultdict
 import time
 import matplotlib.pyplot as plt
-
-
-# In[2]:
 
 
 # Race Track from Sutton and Barto Figure 5.6
@@ -62,13 +53,7 @@ tiny_course = ['WWWWWW',
                'W--WWW',]
 
 
-# In[3]:
-
-
 ACTIONS = [[1,1],[1,0],[1,-1],[-1,-1],[0,-1],[-1,0],[0,0],[0,1],[-1,1]]
-
-
-# In[7]:
 
 
 class RaceTrack:
@@ -240,45 +225,11 @@ class RaceTrack:
             
         return self.real_policy
 
-
-# In[8]:
-
-
 env = RaceTrack()
-
-
-# In[23]:
-
-
 Q,policy = env.Monte_Carlo_On_Policy(iters=10000)
-
-
-# In[24]:
-
-
 value = env.best_value()
-# policy
-
-
-# In[25]:
-
-
 Q
-
-
-# In[26]:
-
-
 value
-
-
-# In[27]:
-
-
-tiny_course[5][1]
-
-
-# In[ ]:
 
 
 
