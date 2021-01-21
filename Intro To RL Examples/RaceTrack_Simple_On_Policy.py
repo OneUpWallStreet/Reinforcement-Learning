@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[89]:
+# In[1]:
 
 
 import numpy as np
@@ -68,7 +68,7 @@ tiny_course = ['WWWWWW',
 ACTIONS = [[1,1],[1,0],[1,-1],[-1,-1],[0,-1],[-1,0],[0,0],[0,1],[-1,1]]
 
 
-# In[76]:
+# In[7]:
 
 
 class RaceTrack:
@@ -190,18 +190,16 @@ class RaceTrack:
 
     def Update_Q(self):
         
-
+        
         tra = self.get_episode()
 
         states,actions,rewards = zip(*tra)
 
         for i,state in enumerate(states):
-
             for j,x in enumerate(ACTIONS):
 
                 if x == actions[i]:
                     action = j
-
             self.N[state][action] +=1 
             alpha = 1/self.N[state][action]
             self.Q[state][action] += alpha*(sum(rewards[i:]) - self.Q[state][action]) 
@@ -219,16 +217,16 @@ class RaceTrack:
     def Monte_Carlo_On_Policy(self,iters):
 
         for i in range(iters):
-
+            
+            
             self.eps = max(self.eps_min,self.eps*self.eps_decay)
 
             self.Q = self.Update_Q()
 
         policy = self.best_policy()
         self.real_policy = self.Real_Actions(policy)
-
         return self.Q,self.real_policy
-    
+
     def Real_Actions(self,policy):
         states_ava = []
         for i in policy:
@@ -243,38 +241,38 @@ class RaceTrack:
         return self.real_policy
 
 
-# In[77]:
+# In[8]:
 
 
 env = RaceTrack()
 
 
-# In[85]:
+# In[23]:
 
 
 Q,policy = env.Monte_Carlo_On_Policy(iters=10000)
 
 
-# In[86]:
+# In[24]:
 
 
 value = env.best_value()
-policy
+# policy
 
 
-# In[87]:
+# In[25]:
 
 
 Q
 
 
-# In[88]:
+# In[26]:
 
 
 value
 
 
-# In[75]:
+# In[27]:
 
 
 tiny_course[5][1]
