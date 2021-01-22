@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[203]:
-
-
 import numpy as np
 from collections import defaultdict
 import matplotlib.pyplot as plt
@@ -11,10 +5,6 @@ import seaborn as sn
 from matplotlib.colors import LinearSegmentedColormap
 import time
 
-W = LinearSegmentedColormap.from_list('w', ["w", "w"], N=256)
-
-
-# In[204]:
 
 
 ACTIONS = {
@@ -23,10 +13,6 @@ ACTIONS = {
     2: [0, -1],  # west
     3: [0, 1],   # east
 }
-
-
-# In[208]:
-
 
 class GridWorld:
 
@@ -305,15 +291,7 @@ class GridWorld:
             
 
 
-
-# In[209]:
-
-
 env = GridWorld()
-
-
-# In[210]:
-
 
 iters = int(input('Enter Number Of Iters: '))
 alpha = 0.5
@@ -333,10 +311,5 @@ print('Printing State Action Pairs:')
 print(Q)
 print('\n')
 # time.sleep(5)
-
-
-# In[ ]:
-
-
 
 
