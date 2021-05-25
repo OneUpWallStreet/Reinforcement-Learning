@@ -188,7 +188,7 @@ valueFun = ValueFunction(stepsize)
 Bike = MountainCar()
 
 #Learning Semi Gradient Sarsa 
-iters = 100
+iters = 50
 Bike.run(valueFun,iters)
 
 #Running the OpenAI enviroment with the optimal policy (without epsilon exploration)
